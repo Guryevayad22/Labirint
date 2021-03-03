@@ -18,7 +18,7 @@ public class View extends JFrame implements KeyEventDispatcher {
     }
     static int[][] maze = {
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 5, 1, 0, 1, 0, 1, 0, 0, 0, 2, 0, 1},
+            {1, 2, 1, 0, 1, 0, 1, 0, 0, 0, 2, 0, 1},
             {1, 0, 1, 0, 2, 0, 2, 0, 1, 1, 1, 0, 1},
             {1, 2, 1, 0, 1, 2, 1, 0, 0, 2, 0, 0, 1},
             {1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1},
@@ -37,7 +37,7 @@ public class View extends JFrame implements KeyEventDispatcher {
         int x = ballX / 30; //берем координатты по х и у и делим их на 30 - получаем номер элемента в массиве
         int y = ballY / 30;
 
-        boolean right = (maze[y][x + 1] == 0 | maze[y][x + 1] == 5 | maze[y][x + 1] == 4); //проверяем, будет ли следующий в каком-то из направлений элемент нулем
+        boolean right = (maze[y][x + 1] == 0 /*| maze[y][x + 1] == 5*/ | maze[y][x + 1] == 4); //проверяем, будет ли следующий в каком-то из направлений элемент нулем
         return right; // возвращаем тру или фолз
     }
 
@@ -48,7 +48,7 @@ public class View extends JFrame implements KeyEventDispatcher {
         int x = ballX / 30;
         int y = ballY / 30;
 
-        boolean left = (maze[y][x - 1] == 0 | maze[y][x - 1] == 5 | maze[y][x - 1] == 4);
+        boolean left = (maze[y][x - 1] == 0  | maze[y][x - 1] == 4);
 
         return left;
     }
@@ -57,7 +57,7 @@ public class View extends JFrame implements KeyEventDispatcher {
         int x = ballX / 30;
         int y = ballY / 30;
 
-        boolean up = (maze[y - 1][x] == 0 | maze[y - 1][x] == 5 | maze[y - 1][x] == 4);
+        boolean up = (maze[y - 1][x] == 0 | maze[y - 1][x] == 4);
 
         return up;
     }
@@ -66,7 +66,7 @@ public class View extends JFrame implements KeyEventDispatcher {
         int x = ballX / 30;
         int y = ballY / 30;
 
-        boolean down = (maze[y + 1][x] == 0 | maze[y + 1][x] == 5 | maze[y + 1][x] == 4);
+        boolean down = (maze[y + 1][x] == 0 | maze[y + 1][x] == 4);
 
         return down;
     }
@@ -128,35 +128,37 @@ public class View extends JFrame implements KeyEventDispatcher {
             } else if (ballY / 30 == 8 && ballX / 30 == 8) {
                 TaskFrame task2 = new TaskFrame("Лучшая пара в ГП.", "Малфой и Гарри", "Гарри и Северус");
             } else if (ballY / 30 == 7 && ballX / 30 == 11) {
-                TaskFrame task2 = new TaskFrame("Ты смотрел ГП?", "Конечно", "Я в горах живу (:");
+                TaskFrame task3 = new TaskFrame("Ты смотрел ГП?", "Каждый год пресматриваю.", "Я в горах живу (:");
             } else if (ballY / 30 == 6 && ballX / 30 == 6) {
-                TaskFrame task3 = new TaskFrame("Какой из этих вопросов Северус Снегг не задавал Гарри Поттеру на самом первом уроке зельеварения?", "Какое растение является противоядием от большинства ядов?", "Что получится, если я смешаю измельченный корень асфоделя с настойкой полыни?");
+                TaskFrame task4 = new TaskFrame("Какой из этих вопросов Северус Снегг не задавал Гарри Поттеру на самом первом уроке зельеварения?", "Какое растение является противоядием от большинства ядов?", "Что получится, если я смешаю измельченный корень асфоделя с настойкой полыни?");
             } else if (ballY / 30 == 6 && ballX / 30 == 4) {
-                TaskFrame task4 = new TaskFrame(" Как зовут бабушку Невилла?", "Августа.", "Амелия.");
+                TaskFrame task5 = new TaskFrame(" Как зовут бабушку Невилла?", "Августа.", "Амелия.");
             } else if (ballY / 30 == 5 && ballX / 30 == 3) {
-                TaskFrame task5 = new TaskFrame("Какой запах не чувствовала Гермиона, вдыхая аромат амортенции?", "Запах волос Рона.", "Запах скошенной травы.");
+                TaskFrame task6 = new TaskFrame("Какой запах не чувствовала Гермиона, вдыхая аромат амортенции?", "Запах волос Рона.", "Запах скошенной травы.");
             } else if (ballY / 30 == 3 && ballX / 30 == 1) {
-                TaskFrame task6 = new TaskFrame("Кто из этих персонажей не присутствовал на первом собрании клуба Слизнорта?", "Перси Уизли.", "Кормак Маклагген.");
+                TaskFrame task7 = new TaskFrame("Кто из этих персонажей не присутствовал на первом собрании клуба Слизнорта?", "Перси Уизли.", "Кормак Маклагген.");
             } else if (ballY / 30 == 6 && ballX / 30 == 1) {
-                TaskFrame task7 = new TaskFrame("Какой из этих паролей является паролем к портрету Полной Дамы и  открывает дверь в башню Гриффиндора?", "Мимбулус Мемблетония.", "Сосновая свежесть.");
+                TaskFrame task8 = new TaskFrame("Какой из этих паролей является паролем к портрету Полной Дамы и  открывает дверь в башню Гриффиндора?", "Мимбулус Мемблетония.", "Сосновая свежесть.");
             } else if (ballY / 30 == 8 && ballX / 30 == 2) {
-                TaskFrame task8 = new TaskFrame("Как известно, Филч, хоть и родился сквибом, пытался научиться магии. Какой курс он проходил?", "Курс скоромагии.", "«Теория магии для сквибов» Миранды Гуссокл.");
+                TaskFrame task9 = new TaskFrame("Как известно, Филч, хоть и родился сквибом, пытался научиться магии. Какой курс он проходил?", "Курс скоромагии.", "«Теория магии для сквибов» Миранды Гуссокл.");
             } else if (ballY / 30 == 8 && ballX / 30 == 4) {
-                TaskFrame task9 = new TaskFrame("Полное имя Дамблдора?", "Альбус Персиваль Вулфрик Брайан Дамблдор.", "Альбус Персиваль Брайан Вулфрик Дамблдор.");
+                TaskFrame task10 = new TaskFrame("Полное имя Дамблдора?", "Альбус Персиваль Вулфрик Брайан Дамблдор.", "Альбус Персиваль Брайан Вулфрик Дамблдор.");
             } else if (ballY / 30 == 7 && ballX / 30 == 5) {
-                TaskFrame task10 = new TaskFrame("У Дамблдора, как известно, есть шрам над левым коленом. Что он собой представляет?", "Схема лондонской подземки.", "Он имеет очертания Хогвартса, конечно.");
+                TaskFrame task11 = new TaskFrame("У Дамблдора, как известно, есть шрам над левым коленом. Что он собой представляет?", "Схема лондонской подземки.", "Он имеет очертания Хогвартса, конечно.");
             } else if (ballY / 30 == 5 && ballX / 30 == 8) {
-                TaskFrame task11 = new TaskFrame("Сколько сиклей в галлеоне?", "17", "29");
+                TaskFrame task12 = new TaskFrame("Сколько сиклей в галлеоне?", "17", "29");
             } else if (ballY / 30 == 3 && ballX / 30 == 9) {
-                TaskFrame task12 = new TaskFrame("Из чего состоит сердцевина волшебной палочки Драко Малфоя?", "Волос единорога.", "Сердечная жила дракона.");
+                TaskFrame task13 = new TaskFrame("Из чего состоит сердцевина волшебной палочки Драко Малфоя?", "Волос единорога.", "Сердечная жила дракона.");
             } else if (ballY / 30 == 2 && ballX / 30 == 6) {
-                TaskFrame task13 = new TaskFrame("Как звучит второе имя Гермионы?", "Джин.", "Роза.");
+                TaskFrame task14 = new TaskFrame("Как звучит второе имя Гермионы?", "Джин.", "Роза.");
             } else if (ballY / 30 == 3 && ballX / 30 == 5) {
-                TaskFrame task14 = new TaskFrame("Какую форму принимал патронус Полумны Лавгуд?", "Заяц.", "Мозгошмыг.");
+                TaskFrame task15 = new TaskFrame("Какую форму принимал патронус Полумны Лавгуд?", "Заяц.", "Мозгошмыг.");
             } else if (ballY / 30 == 2 && ballX / 30 == 4) {
-                TaskFrame task15 = new TaskFrame("Кто из этих персонажей  был игроком в квиддич?", "Минерва Макгонагалл.", "Билл Уизли.");
+                TaskFrame task16 = new TaskFrame("Кто из этих персонажей  был игроком в квиддич?", "Минерва Макгонагалл.", "Билл Уизли.");
             } else if (ballY / 30 == 1 && ballX / 30 == 10) {
-                TaskFrame task16 = new TaskFrame("Как зовут подругу Полной Дамы, которая рассказывает ей все сплетни замка?", "Виолетта.", "Виола.");
+                TaskFrame task17 = new TaskFrame("Как зовут подругу Полной Дамы, которая рассказывает ей все сплетни замка?", "Виолетта.", "Виола.");
+            } else if (ballY / 30 == 1 && ballX / 30 == 1) {
+                TaskFrame task18 = new TaskFrame("Вам понравилась игра?", "Лучшая игра в моей жизни!", "Конечно!");
             }
 
             //если ступили на серую, из нее никуда не пойти пока окно открыто
@@ -201,9 +203,6 @@ public class View extends JFrame implements KeyEventDispatcher {
                     case 2:
                         color = Color.BLACK;
                         break;
-                    case 5:
-                        color = Color.GREEN;
-                        break;
                     case 4:
                         color = Color.WHITE;
                         break;
@@ -221,6 +220,7 @@ public class View extends JFrame implements KeyEventDispatcher {
         //вот тут шарик рисую
         g.setColor(Color.RED);
         g.fillOval(ballX, ballY, 30, 30);
+
 
         int d = 60;
         Graphics2D g2d = (Graphics2D) g;
